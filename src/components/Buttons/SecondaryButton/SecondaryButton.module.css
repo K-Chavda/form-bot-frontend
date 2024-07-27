@@ -1,0 +1,20 @@
+@import url("../../../index.css");
+
+.secondaryButton {
+  height: 100%;
+  width: 100%;
+  max-width: 85px;
+  color: var(--secondary-button-color);
+  background-color: transparent;
+  border: 1px solid var(--secondary-button-color);
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.secondaryButton:hover {
+  background-color: var(--secondary-button-color);
+  color: var(--font-color);
+}

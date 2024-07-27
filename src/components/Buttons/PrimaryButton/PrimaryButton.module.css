@@ -1,0 +1,18 @@
+@import url("../../../index.css");
+
+.primaryButton {
+  height: 100%;
+  width: 100%;
+  color: var(--font-color);
+  background-color: var(--primary-color);
+  border: none;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.primaryButton:hover {
+  background-color: var(--primary-button-hover);
+}

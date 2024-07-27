@@ -1,0 +1,293 @@
+@import url("../../../index.css");
+
+/*
+ *   Body Section Styles
+ */
+
+.formBuilderBodyContainer {
+  height: calc(100% - 88px);
+  width: calc(100% - 32px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #1f1f23;
+  position: relative;
+  padding: 16px;
+}
+
+.shareLinkMessage {
+  height: 10%;
+  max-height: 35px;
+  width: 100%;
+  max-width: 115px;
+  position: absolute;
+  top: 10px;
+  right: 125px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: #18181b;
+  border: 1px solid #3d3d3f;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.shareLinkMessageOpacity {
+  opacity: 1;
+}
+
+.shareLinkCopySuccessText {
+  height: 100%;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--open-sans-font);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.formBodyElementsContainer {
+  background-color: #18181b;
+  width: calc(30% - 34px);
+  max-width: calc(345px - 34px);
+  min-width: calc(345px - 34px);
+  height: calc(100% - 360px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  box-shadow: 2px 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0px 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 65px 17px 295px 17px;
+}
+
+.formBubbleAndInputElementsContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.elementsContainer {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.elementsHeader {
+  font-family: var(--open-sans-font);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  width: 100%;
+  height: 100%;
+  max-height: 21px;
+}
+
+.elementCardsContainer {
+  height: auto;
+  min-height: 102px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.elementCards {
+  width: calc(50% - 34px);
+  max-width: calc(147px - 34px);
+  height: calc(100% - 18px);
+  max-height: calc(40px - 18px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid rgba(39, 39, 42, 1);
+  background-color: rgb(31, 31, 35);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  padding: 9px 17px;
+  gap: 8px;
+}
+
+.elementIcon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.elementText {
+  font-family: var(--open-sans-font);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--font-color);
+}
+
+.formBodyFormFieldsContainer {
+  height: calc(100% - 80px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 80px 0px 0px 0px;
+}
+
+.formFieldsContainer {
+  height: 100%;
+  max-height: 100%;
+  width: 100%;
+  min-width: calc(350px - 20px);
+  max-width: calc(350px - 20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: scroll;
+  gap: 50px;
+  padding: 0px 10px;
+}
+
+.formFieldCards {
+  width: calc(100% - 50px);
+  min-width: calc(320px - 50px);
+  height: auto;
+  max-height: calc(320px - 40px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  border-radius: 16px;
+  background-color: #18181b;
+  position: relative;
+  gap: 8px;
+}
+
+.formFieldInputContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.formFieldCardText {
+  font-family: var(--open-sans-font);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 21px;
+  color: var(--font-color);
+}
+
+.inputContainer {
+  width: 100%;
+  height: 100%;
+  max-height: 65px;
+  min-height: 65px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+}
+
+.formField {
+  width: calc(100% - 62px);
+  height: calc(100% - 24px);
+  max-height: calc(45px - 24px);
+  min-height: calc(45px - 24px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(31, 31, 35);
+  border: none;
+  border-radius: 5px;
+  padding: 12px 12px 12px 50px;
+  color: var(--font-color);
+}
+
+.inputIcon {
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  top: 10.5px;
+  left: 12.5px;
+}
+
+.error {
+  color: rgba(255, 39, 39, 0.7);
+  font-family: "Poppins", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.formFieldDeleteIcon {
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background-color: rgba(248, 43, 96, 1);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.formFieldHintText {
+  font-family: var(--open-sans-font);
+  font-size: 12px;
+  font-weight: 600;
+  color: #555555;
+}
+
+.formFieldButton {
+  width: calc(100% - 62px);
+  height: calc(100% - 24px);
+  max-height: calc(45px - 24px);
+  min-height: calc(45px - 24px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(31, 31, 35);
+  border: none;
+  border-radius: 5px;
+  padding: 12px 12px 12px 50px;
+  color: var(--font-color);
+  font-size: 12px;
+  font-weight: 600;
+  outline: none;
+}
+
+.formFieldButton::placeholder {
+  font-family: var(--open-sans-font);
+  font-size: 12px;
+  font-weight: 600;
+  color: #767676;
+}
+
+.inputContainer input:focus,
+.inputContainer input:active {
+  border: none;
+  outline: none;
+}
+
+.formFieldError {
+  border: 1px solid #f55050;
+}

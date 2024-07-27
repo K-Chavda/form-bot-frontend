@@ -1,0 +1,116 @@
+@import url("../../index.css");
+
+.modelDialogContainer {
+  height: auto; /*calc(100% - 50px);*/
+  max-height: calc(285px - 50px);
+  width: auto; /*calc(100% - 50px);*/
+  max-width: calc(540px - 50px);
+  min-width: calc(445px - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+  background-color: #18181b;
+  box-shadow: 0px 0px 4px 0px rgba(255, 255, 255, 0.25);
+  padding: 25px;
+  position: absolute;
+  left: auto;
+  top: calc(285px - 75px);
+}
+
+.modelDialogContent {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+}
+
+.modelDialogContentTextAndInput {
+  height: calc(100% - 50px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.modelDialogContentTextAndInput span {
+  height: auto;
+  width: 100%;
+  max-width: calc(445px - 50px);
+  font-family: var(--open-sans-font);
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+}
+
+.modelDialogContentTextAndInput input,
+.modelDialogInput {
+  height: 100%;
+  max-height: 75px;
+  min-height: 75px;
+  width: calc(100% - 20px);
+  min-width: calc(540px - 90px);
+  background-color: #1f1f23;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  color: var(--font-color);
+  font-family: var(--open-sans-font);
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0px 10px;
+}
+
+.modelDialogContentTextAndInput input::placeholder,
+.modelDialogInput input::placeholder {
+  color: rgba(161, 161, 161, 0.3);
+  font-family: var(--open-sans-font);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.inputLabel {
+  height: auto;
+  width: 100%;
+  min-width: calc(540px - 70px);
+  font-family: var(--open-sans-font);
+  font-size: 26px;
+  font-weight: 600;
+  color: white;
+}
+
+.modelDialogButtons {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.modelDialogButtons button {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: var(--font-color);
+  font-family: var(--open-sans-font);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 41px;
+}
+
+.modelDialogButtons button:nth-child(1) {
+  color: #4b83ff;
+  border-right: 1px solid #47474a;
+}
+
+.closeModelDialog {
+  display: none;
+}

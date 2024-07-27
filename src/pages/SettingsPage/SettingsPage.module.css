@@ -1,0 +1,141 @@
+@import url("../../index.css");
+
+.mainContainer {
+  height: calc(100vh - 100px);
+  width: calc(100vw - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f1f23;
+  position: relative;
+  padding: 40px 0px 60px 60px;
+}
+
+.formContainer {
+  height: 100%;
+  max-height: 600px;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 70px;
+}
+
+.formHeadingText {
+  font-family: var(--open-sans-font);
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.formFieldsContainer {
+  height: 100%;
+  max-height: 385px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+}
+
+.formInputFieldsContainer {
+  height: 100%;
+  max-height: 280px;
+  min-height: 280px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.inputFieldContainer {
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  max-height: calc(55px - 20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #d0d0d0;
+  position: relative;
+  padding: 10px;
+}
+
+.inputFieldIcon {
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  left: 10px;
+}
+
+.inputFieldIcon:nth-child(1) {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+}
+
+.formInputField {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 0px 0px 0px 45px;
+  color: var(--font-color);
+}
+
+.eyeIcon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+.formUpdateButtonContainer {
+  height: 100%;
+  max-height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-button-color);
+  border-radius: 55px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.formUpdateButtonContainer:hover {
+  background-color: var(--primary-button-hover);
+}
+
+.updateButton {
+  font-family: var(--open-sans-font);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.logoutButtonContainer {
+  position: absolute;
+  bottom: 70px;
+  left: 70px;
+  height: 100%;
+  max-height: 25px;
+  width: 100%;
+  max-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.logoutText {
+  color: #cf3636;
+  font-family: var(--poppins-font);
+  font-size: 16px;
+  font-weight: 500;
+}

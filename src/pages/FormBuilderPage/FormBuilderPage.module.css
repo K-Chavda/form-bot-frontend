@@ -1,0 +1,150 @@
+@import url("../../index.css");
+
+.mainContainer {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgb(24, 24, 27);
+  overflow: hidden;
+}
+
+/*
+ *   Header Section Styles
+ */
+
+.formBuilderHeaderContainer {
+  height: calc(10% - 16px);
+  max-height: calc(56px - 16px);
+  width: calc(100% - 40px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 8px 20px;
+}
+
+.headerFormNameContainer {
+  height: 100%;
+  width: 30%;
+  max-width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formNameInput {
+  height: 100%;
+  max-height: 30px;
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: #37373e;
+  border-radius: 3px;
+  padding: 0px 20px;
+  color: var(--font-color);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.formNameInput::placeholder {
+  font-family: var(--open-sans-font);
+  font-size: 12px;
+  font-weight: 600;
+  color: #767676;
+}
+
+.headerFormMenuContainer {
+  height: 100%;
+  width: 30%;
+  max-width: 230px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formMenuItemsContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.formMenuItems {
+  text-decoration: none;
+  color: var(--font-color);
+  font-family: var(--open-sans-font);
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 12px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+}
+
+.active {
+  border: 1px solid #7ea6ff;
+  color: #7ea6ff;
+}
+
+.headerButtonsContainer {
+  height: 100%;
+  width: 30%;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headerButtons {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.headerButton {
+  height: calc(100% - 8px);
+  max-height: 25px;
+  width: 100%;
+  max-width: 65px;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  padding: 4px 13px;
+  color: var(--font-color);
+  font-family: var(--open-sans-font);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.bgGreen {
+  background-color: #3fb66c;
+}
+
+.bgBlue {
+  background-color: #1a5fff;
+}
+
+.disabled {
+  background-color: #848890;
+}
+
+.closeButtonIcon {
+  cursor: pointer;
+}
+
+/*
+ *   Body Section Styles
+ */

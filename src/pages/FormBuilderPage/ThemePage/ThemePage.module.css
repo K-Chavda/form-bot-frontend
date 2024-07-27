@@ -1,0 +1,274 @@
+@import url("../../../index.css");
+
+.mainContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  user-select: none;
+}
+
+.themeOptionsContainer {
+  height: 100%;
+  width: 40%;
+  max-width: 350px;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgb(24, 24, 27);
+  border: 2px solid #27272a;
+}
+
+.themeHeadingTextContainer {
+  height: 25%;
+  max-height: 104px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #2c2c2f;
+}
+
+.themeHeadingText {
+  font-family: var(--open-sans-font);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--font-color);
+}
+
+.themeOptionsCardsContainer {
+  height: calc(100% - 153px);
+  width: 100%;
+  max-width: calc(350px - 108px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 54px;
+}
+
+.themeOptionsCard {
+  height: 35%;
+  max-height: 205px;
+  width: 100%;
+  max-width: 240px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid transparent;
+  cursor: pointer;
+  transition: border 3s ease-in-out;
+}
+
+.selectedThemeCard {
+  border: 5px solid #1b5fff;
+}
+
+.themeCardSkeletonContainer {
+  height: calc(100% - 40px);
+  width: calc(100% - 40px);
+  background-color: var(--font-color);
+  padding: 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.themeCardSkeleton {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.bubbleTextSkeletonContainer {
+  height: 100%;
+  max-height: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3px;
+}
+
+.inputTextSkeletonContainer {
+  height: 100%;
+  max-height: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+}
+
+.profileIcon {
+  height: 15px;
+  width: 15px;
+}
+
+.themeCardTextContainer {
+  height: 100%;
+  max-height: 45px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.themeCardText {
+  font-family: var(--open-sans-font);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0px 15px;
+}
+
+.themePreviewContainer {
+  height: calc(100% - 170px);
+  width: calc(100% - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 85px 40px;
+  gap: 3px;
+}
+
+.previewProfileIconTextContainer {
+  height: 100%;
+  max-height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.previewProfileIconContainer {
+  height: 100%;
+  max-height: 50px;
+  width: 100%;
+  max-width: 50px;
+  border-radius: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.previewBubbleMessageText {
+  height: calc(100% - 20px);
+  max-height: calc(50px - 20px);
+  width: auto;
+  border-radius: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #f7f7f8;
+  color: #000;
+  padding: 10px 12px;
+  font-family: var(--inter-font);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.previewInputTextContainer {
+  height: 100%;
+  max-height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  align-self: flex-end;
+}
+
+.previewInputText {
+  height: calc(100% - 20px);
+  max-height: calc(50px - 20px);
+  width: auto;
+  font-family: var(--inter-font);
+  font-size: 20px;
+  font-weight: 400;
+  background-color: #0042da;
+  padding: 10px 20px;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.previewInputText::after {
+  content: " ";
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: #0063ff;
+  border-radius: 10px;
+  top: -4px;
+  right: -4px;
+}
+
+.bubbleTextSkeletonLightTheme {
+  background-color: #e6e8fa;
+}
+
+.inputTextSkeletonLightTheme {
+  background-color: #ff8e22;
+}
+
+.buttonSkeletonLightTheme {
+  background-color: #0042da;
+}
+
+.bubbleTextSkeletonDarkTheme {
+  background-color: #1e293b;
+  color: var(--font-color);
+}
+
+.inputTextSkeletonDarkTheme {
+  background-color: #ff8e22;
+}
+
+.buttonSkeletonDarkTheme {
+  background-color: #0042da;
+}
+
+.bubbleTextSkeletonTealTheme {
+  background-color: #124b70;
+  color: var(--font-color);
+}
+
+.inputTextSkeletonTealTheme {
+  background-color: #ff8e22;
+}
+
+.buttonSkeletonTealTheme {
+  background-color: #0042da;
+}
+
+.lightThemeCard {
+  background-color: rgb(255, 255, 255);
+}
+
+.darkThemeCard {
+  background-color: rgb(23, 25, 35);
+}
+
+.tealThemeCard {
+  background-color: rgb(81, 140, 155);
+}

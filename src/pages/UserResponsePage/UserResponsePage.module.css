@@ -1,0 +1,517 @@
+@import url("../../index.css");
+
+:root {
+  --placeholder-color: #847f7f;
+  --date-field-background-color: #ffffff;
+  --scrollbar-thumb-color: #847f7f;
+  --scrollbar-thumb-hover-color: #555;
+  --scrollbar-track-color: #555555;
+}
+
+.lightTheme {
+  background-color: var(--font-color);
+  color: #000000;
+}
+
+.tealTheme {
+  background-color: #518c9b;
+  color: var(--font-color);
+}
+
+.darkTheme {
+  background-color: #171923;
+  color: var(--font-color);
+}
+
+.mainContainer {
+  height: calc(100vh - 240px);
+  width: calc(100vw - 560px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 280px;
+}
+
+.formBotChatContainer {
+  width: calc(100% - 40px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  overflow-y: scroll;
+  padding: 0px 20px;
+}
+
+.formBotChatContainer::-webkit-scrollbar {
+  width: 20px;
+  height: 20px;
+}
+
+.formBotChatContainer::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
+  border-radius: 100px;
+}
+
+.formBotChatContainer::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color);
+  border-radius: 100px;
+  border: 6px solid var(--scrollbar-track-color);
+}
+
+.formBotChatContainer::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-color);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: #232e33 var(--scrollbar-track-color);
+  }
+}
+
+.bubbleElementContainer {
+  width: 100%;
+  height: auto;
+  max-height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.bubbleElement {
+  width: auto;
+  height: 100%;
+  max-height: calc(40px - 10px);
+  min-height: calc(40px - 10px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 6px;
+  background-color: #f7f8ff;
+  color: #000000;
+  padding: 5px 10px;
+  font-family: var(--open-sans-font);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.bubbleElementIcon {
+  height: 40px;
+  width: 40px;
+  border-radius: 150px;
+  align-self: end;
+}
+
+.bubbleImageContainer {
+  width: auto;
+  height: calc(100% - 20px);
+  max-height: calc(280px - 20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #f7f8ff;
+  border-radius: 6px;
+}
+
+.bubbleVideoContainer {
+  width: auto;
+  height: calc(100% - 20px);
+  max-height: calc(280px - 20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #f7f8ff;
+  border-radius: 6px;
+}
+
+.bubbleImage {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  border-radius: 6px;
+}
+
+.inputElementContainer {
+  width: 100%;
+  height: 10%;
+  max-height: 60px;
+  min-height: 60px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+
+.inputElement,
+.inputElementRating {
+  width: calc(100% - 40px);
+  max-width: calc(330px - 40px);
+  min-width: calc(330px - 40px);
+  height: 100%;
+  max-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  background-color: var(--font-color);
+  color: #000000;
+  padding: 0px 20px;
+  font-family: var(--open-sans-font);
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
+}
+
+.inputElement:active,
+.inputElement:focus {
+  border: none;
+  outline: none;
+}
+
+.inputElementReadOnly {
+  background-color: #777777;
+  pointer-events: none;
+  color: var(--font-color);
+}
+
+.sendButtonContainer {
+  width: 100%;
+  max-width: 60px;
+  height: 100%;
+  max-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1b5fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sendButtonContainerReadOnly {
+  background-color: #777777;
+  pointer-events: none;
+  color: var(--font-color);
+}
+
+.inputElementButton {
+  width: auto;
+  height: calc(100% - 16px);
+  max-height: calc(60px - 16px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: #053ec4;
+  color: var(--font-color);
+  font-family: var(--open-sans-font);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 15px;
+  border-radius: 6px;
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
+}
+
+.inputElementButtonReadOnly {
+  background-color: #ff8e22;
+  pointer-events: none;
+  color: var(--font-color);
+}
+
+.inputElementRating {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.inputElementRatingReadOnly {
+  background-color: #777777;
+  pointer-events: none;
+  color: var(--font-color);
+}
+
+.ratingIcon {
+  height: 35px;
+  width: 35px;
+  border-radius: 125px;
+  background-color: #1a5fff;
+  color: var(--font-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--open-sans-font);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ratingIconSelected {
+  background-color: #ff8e22;
+}
+
+/*
+ *  Custom Date Picker Styles
+ */
+
+input[type="date"] {
+  position: relative;
+  width: 100%;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: transparent;
+  background: none;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  cursor: pointer;
+  left: 0;
+}
+
+input[type="date"]:before {
+  color: transparent;
+
+  background-color: var(--date-field-background-color);
+  display: block;
+  content: attr(placeholder);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: auto;
+  left: 20px;
+  color: var(--placeholder-color);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: var(--open-sans-font);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* For Mobile Portrait View */
+@media screen and (max-width: 480px) {
+  .mainContainer {
+    height: calc(100vh - 40px);
+    width: calc(100vw - 20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+  }
+
+  .formBotChatContainer {
+    width: 100%;
+    height: calc(100% - 40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    overflow: scroll;
+    padding: 20px 0px;
+  }
+
+  .bubbleElementContainer {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .bubbleElement {
+    width: auto;
+    height: 100%;
+    max-height: calc(40px - 10px);
+    min-height: calc(40px - 10px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 6px;
+    background-color: #f7f8ff;
+    color: #000000;
+    padding: 5px 10px;
+    font-family: var(--open-sans-font);
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .bubbleElementIcon {
+    height: 40px;
+    width: 40px;
+    border-radius: 150px;
+    align-self: end;
+  }
+
+  .bubbleImageContainer {
+    width: auto;
+    height: calc(100% - 20px);
+    max-height: calc(200px - 20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #f7f8ff;
+    border-radius: 6px;
+  }
+
+  .bubbleVideoContainer {
+    width: auto;
+    height: calc(100% - 20px);
+    max-height: calc(200px - 20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #f7f8ff;
+    border-radius: 6px;
+  }
+
+  .bubbleImage {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+    border-radius: 6px;
+  }
+
+  .inputElementContainer {
+    width: 100%;
+    height: 10%;
+    max-height: 40px;
+    min-height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .inputElement,
+  .inputElementRating {
+    width: calc(100% - 40px);
+    max-width: calc(200px - 40px);
+    min-width: calc(200px - 40px);
+    height: 100%;
+    max-height: 40px;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    background-color: var(--font-color);
+    color: #000000;
+    padding: 0px 20px;
+    font-family: var(--open-sans-font);
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .inputElement:active,
+  .inputElement:focus {
+    border: none;
+    outline: none;
+  }
+
+  .inputElementReadOnly {
+    background-color: #777777;
+    pointer-events: none;
+    color: var(--font-color);
+  }
+
+  .sendButtonContainer {
+    width: 100%;
+    max-width: 40px;
+    height: 100%;
+    max-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1b5fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .sendButton {
+    width: 100%;
+    max-width: 25px;
+    height: 100%;
+    max-height: 25px;
+  }
+
+  .sendButtonContainerReadOnly {
+    background-color: #777777;
+    pointer-events: none;
+    color: var(--font-color);
+  }
+
+  .inputElementButton {
+    width: 60px;
+    height: calc(100% - 16px);
+    max-height: calc(60px - 16px);
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: #053ec4;
+    color: var(--font-color);
+    font-family: var(--open-sans-font);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 6px;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .inputElementButtonReadOnly {
+    background-color: #ff8e22;
+    pointer-events: none;
+    color: var(--font-color);
+  }
+
+  .inputElementRating {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0px 5px;
+  }
+
+  .inputElementRatingReadOnly {
+    background-color: #777777;
+    pointer-events: none;
+    color: var(--font-color);
+  }
+
+  .ratingIcon {
+    height: 25px;
+    width: 25px;
+    border-radius: 125px;
+    background-color: #1a5fff;
+    color: var(--font-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--open-sans-font);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .ratingIconSelected {
+    background-color: #ff8e22;
+  }
+}

@@ -1,0 +1,181 @@
+@import url("../../../index.css");
+
+.mainContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(24, 24, 27);
+  gap: 50px;
+}
+
+.noResponsesMessage {
+  font-family: var(--inter-font);
+  font-size: 36px;
+  font-weight: 400;
+  color: #696969;
+}
+
+.userResponseAnalyticsContainer {
+  width: 100%;
+  max-width: 900px;
+  height: 100%;
+  max-height: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 13px;
+}
+
+.analyticsCard {
+  height: calc(100% - 12px);
+  width: 100%;
+  max-width: calc(245px - 24px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 5px;
+  background-color: #323232;
+  border-radius: 16px;
+  padding: 12px 0px 0px 24px;
+}
+
+.analyticsCard:nth-child(1),
+.analyticsCard:nth-child(2) {
+  max-width: calc(195px - 24px);
+}
+
+.analyticsCard span {
+  font-family: var(--open-sans-font);
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.userResponseDataTableContainer {
+  width: 100%;
+  max-width: 1204px;
+  height: 100%;
+  max-height: 450px; /* Updated max-height */
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: scroll; /* Added for vertical scrolling */
+  scroll-behavior: smooth;
+  gap: 10px;
+}
+
+.userReponsesTable {
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
+  max-width: calc(900px - 20px);
+  padding: 10px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 0;
+  position: relative;
+}
+
+thead {
+  display: block;
+  background-color: #18171c;
+  color: #ffffff;
+  position: sticky;
+  top: 0;
+  border-radius: 8px 8px 0 0; /* Top rounded corners for thead */
+}
+
+th,
+td {
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  text-align: start;
+  font-family: var(--open-sans-font);
+  font-size: 16px;
+  font-weight: 400;
+  background-color: #18171c;
+}
+
+tbody {
+  display: block;
+  background-color: #18171c;
+  color: #ffffff;
+}
+
+.srNo {
+  width: 25px;
+  min-width: 25px;
+  max-width: 25px;
+}
+
+.ratingTd {
+  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
+  text-align: center;
+}
+
+.tdWidth {
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+}
+
+.submittedAt {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+}
+
+.userResponseDataTableContainer::-webkit-scrollbar {
+  width: 20px;
+  height: 20px;
+}
+
+.userResponseDataTableContainer::-webkit-scrollbar-track {
+  background: #18171c;
+  border-radius: 100px;
+}
+
+.userResponseDataTableContainer::-webkit-scrollbar-thumb {
+  background: #232e33;
+  border-radius: 100px;
+  border: 6px solid #18171c;
+}
+
+.userResponseDataTableContainer::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: #232e33 #18171c;
+  }
+}
+
+/*
+ *  Skeleton styles
+ */
+
+.skeletonContainerTHead,
+.skeletonTr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #18171c;
+  color: #ffffff;
+}

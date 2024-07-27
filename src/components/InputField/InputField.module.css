@@ -1,0 +1,59 @@
+@import url("../../index.css");
+
+.inputContainer {
+  height: 100%;
+  max-height: 92px;
+  min-height: 92px;
+  width: 100%;
+  max-width: 315px;
+}
+
+.label {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+  font-size: 16px;
+  color: var(--font-color);
+  margin-bottom: 6px;
+}
+
+.labelError {
+  color: #ff4141;
+}
+
+.input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: transparent;
+  color: var(--font-color);
+  transition: all 0.3s ease;
+}
+
+.input::placeholder {
+  color: #636364;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.input:focus,
+.input:active {
+  outline: none;
+  border: 1px solid var(--primary-color);
+}
+
+.inputError {
+  border-color: rgba(255, 39, 39, 0.5);
+}
+
+.error {
+  color: rgba(255, 39, 39, 0.7);
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
