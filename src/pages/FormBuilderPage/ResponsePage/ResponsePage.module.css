@@ -179,3 +179,8 @@ tbody {
   background-color: #18171c;
   color: #ffffff;
 }
+
+.skeletonContainerTHead th {
+  border: none;
+  padding: 0px;
+}

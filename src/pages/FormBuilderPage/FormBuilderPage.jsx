@@ -140,6 +140,7 @@ const FormBuilderPage = () => {
 
         if (!formId) {
           localStorage.setItem("formId", response.data?._id);
+          localStorage.setItem("formName", response.data?.name);
           setFormId(response.data?._id);
         }
 

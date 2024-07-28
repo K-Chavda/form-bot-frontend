@@ -189,14 +189,14 @@ const DashboardPage = () => {
     localStorage.setItem("formId", "");
     localStorage.setItem("formName", "");
     localStorage.setItem("formTheme", "");
-    navigate(`/form-builder/flow/${folderId}`);
+    navigate(`/form-builder/${folderId ? `${folderId}/` : folderId}flow`);
   };
 
   const handleFormClick = (formId, formName, formTheme) => {
     localStorage.setItem("formId", formId);
     localStorage.setItem("formName", formName);
     localStorage.setItem("formTheme", formTheme);
-    navigate(`/form-builder/flow/${folderId}`, {
+    navigate(`/form-builder/${folderId ? `${folderId}/` : folderId}flow`, {
       state: { formId, formName, formTheme },
     });
   };

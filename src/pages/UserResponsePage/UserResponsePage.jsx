@@ -32,8 +32,11 @@ const UserResponsePage = () => {
   const [videoLoading, setVideoLoading] = useState(true);
   const [startIsIncreased, setStartIsIncreased] = useState(false);
   const [completed, setCompleted] = useState(false);
+  const [uniqueKey, setUniqueKey] = useState("");
 
-  const uniqueKey = nanoid();
+  useEffect(() => {
+    if (!uniqueKey) setUniqueKey(nanoid());
+  }, []);
 
   const handleImageLoad = () => {
     setImageLoading(false);
@@ -170,7 +173,7 @@ const UserResponsePage = () => {
 
       checkAndIncreaseComplete(); // Check and increase completion if needed
 
-      await addUserResponse(formId, currentSeq, value[name]?.value, uniqueKey);
+      // await addUserResponse(formId, currentSeq, value[name]?.value, uniqueKey);
       addUserResponseFuntion(currentSeq, value[name]?.value);
     } else {
       setValue((prevState) => ({
@@ -200,8 +203,7 @@ const UserResponsePage = () => {
     }
 
     checkAndIncreaseComplete();
-    await addUserResponse(formId, currentSeq, value[name]?.value, uniqueKey);
-    addUserResponseFuntion(currentSeq, value[name]?.value);
+    addUserResponseFuntion(currentSeq, innerText);
   };
 
   const handleRatingButtonClick = (name, value) => {
@@ -535,7 +537,7 @@ const UserResponsePage = () => {
                   />
                   {field.type === "bubble_text" ? (
                     <span className={styles.bubbleElement}>
-                      {field.displayValue}
+                      {field.fieldValue}
                     </span>
                   ) : field.type === "gif" || field.type === "image" ? (
                     <div className={styles.bubbleImageContainer}>
