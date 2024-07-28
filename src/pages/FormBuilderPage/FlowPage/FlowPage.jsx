@@ -6,7 +6,12 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 // Icons & Images
-import { checkBlueIcon } from "../../../assets/icons";
+import {
+  checkBlueIcon,
+  gifIcon,
+  imageIcon,
+  videoIcon,
+} from "../../../assets/icons";
 
 const FlowPage = () => {
   const {
@@ -20,9 +25,20 @@ const FlowPage = () => {
     handleInputFieldOnChangeEvent,
     handleFormFieldDeleteButtonClickEvent,
     sortedFormFields,
-    isShared,
     isLoading,
   } = useOutletContext();
+
+  const [dataLoaded, setDataLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setTimeout(() => {
+        setDataLoaded(true);
+      }, 1000); // 1 second delay after loading is complete
+    } else {
+      setDataLoaded(false);
+    }
+  }, [isLoading]);
 
   return (
     <>
@@ -161,7 +177,7 @@ const FlowPage = () => {
           </div>
         </div>
         <div className={styles.formBodyFormFieldsContainer}>
-          {isLoading ? (
+          {isLoading || !dataLoaded ? (
             <div className={styles.formFieldsContainer}>
               <div className={styles.formFieldCards}>
                 <SkeletonTheme baseColor="#2a2a2d" highlightColor="#444">
@@ -236,7 +252,17 @@ const FlowPage = () => {
                             }
                           />
                           <img
-                            src={messageIcon}
+                            src={
+                              field.type === "bubble_text"
+                                ? messageIcon
+                                : field.type === "video"
+                                ? videoIcon
+                                : field.type === "image"
+                                ? imageIcon
+                                : field.type === "gif"
+                                ? gifIcon
+                                : null
+                            }
                             alt="form-bot"
                             className={styles.inputIcon}
                           />

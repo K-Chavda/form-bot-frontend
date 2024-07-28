@@ -23,6 +23,28 @@ import {
   plusIcon,
 } from "../../assets/icons/";
 
+const FolderSkeleton = () => (
+  <div className={styles.FolderCard}>
+    <SkeletonTheme baseColor="#2a2a2d" highlightColor="#444">
+      <Skeleton width={100} height={20} />
+      <Skeleton width={20} height={20} />
+    </SkeletonTheme>
+  </div>
+);
+
+const FormSkeleton = () => (
+  <div className={styles.formCard}>
+    <SkeletonTheme baseColor="#8b8b8d" highlightColor="#bfbfbf">
+      <Skeleton width={175} height={20} />
+      <Skeleton
+        width={20}
+        height={20}
+        containerClassName={styles.cardDeleteIcon}
+      />
+    </SkeletonTheme>
+  </div>
+);
+
 const DashboardPage = () => {
   const navigate = useNavigate();
   const { user, logout } = useContext(UserContext);
@@ -36,8 +58,8 @@ const DashboardPage = () => {
   const [folders, setFolders] = useState([]);
   const [forms, setForms] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [folderToDelete, setFolderToDelete] = useState(""); // New state variable
-  const [formToDelete, setFormToDelete] = useState(""); // New state variable
+  const [folderToDelete, setFolderToDelete] = useState("");
+  const [formToDelete, setFormToDelete] = useState("");
   const [folderId, setFolderId] = useState("");
 
   const handleDropDownClickEvent = () => {
@@ -57,11 +79,10 @@ const DashboardPage = () => {
 
   const handleDelete = (origin, id) => {
     setDeleteModelOrigin(origin);
-
     if (origin === "form") {
       setFormToDelete(id);
     } else if (origin === "folder") {
-      setFolderToDelete(id); // Set the folder ID to be deleted
+      setFolderToDelete(id);
     }
     handleModelOpen("deleteModel");
   };
@@ -101,12 +122,13 @@ const DashboardPage = () => {
     setLoading(true);
     try {
       const response = await getFolders();
-      const foldersData = response.folders || [];
-      setFolders(foldersData);
+      setFolders(response.folders || []);
     } catch (error) {
       setFolders([]);
     } finally {
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
   };
 
@@ -114,13 +136,13 @@ const DashboardPage = () => {
     setLoading(true);
     try {
       const response = await getForms(folderId);
-      const formsData = response.forms || [];
-
-      setForms(formsData);
+      setForms(response.forms || []);
     } catch (error) {
       setForms([]);
     } finally {
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
   };
 
@@ -128,61 +150,58 @@ const DashboardPage = () => {
     try {
       handleModelOpen("createFolderModel");
       setLoading(true);
-
       await createFolder({ folderName });
-
       setFolderName("");
-
       fetchFolders();
     } catch (error) {
       console.error(error);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
   };
 
   const deleteFolderById = async (folderId) => {
     try {
       setLoading(true);
-
       await deleteFolder(folderId);
-
       fetchFolders();
     } catch (error) {
       console.error(error);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
   };
 
   const deleteFormById = async (formId) => {
     try {
       setLoading(true);
-
       await deleteForm(formId);
-
       fetchForms();
     } catch (error) {
       console.error(error);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
   };
 
   const handleConfirmButtonClick = async () => {
     if (isModelOpen.createFolderModel) {
-      createNewFolder();
+      await createNewFolder();
     } else if (isModelOpen.deleteModel) {
       if (deleteModelOrigin === "folder") {
-        deleteFolderById(folderToDelete);
-        handleModelOpen("deleteModel");
+        await deleteFolderById(folderToDelete);
       } else if (deleteModelOrigin === "form") {
-        deleteFormById(formToDelete);
-        handleModelOpen("deleteModel");
+        await deleteFormById(formToDelete);
       }
+      handleModelOpen("deleteModel");
     }
   };
 
   const handleFolderCardClick = (id) => {
-    if (folderId && folderId === id) {
-      setFolderId("");
-    } else {
-      setFolderId(id);
-    }
+    setFolderId((prevId) => (prevId === id ? "" : id));
   };
 
   const handleFormCreateClick = () => {
@@ -225,7 +244,7 @@ const DashboardPage = () => {
               <div
                 className={
                   isMenuExpanded
-                    ? `${styles.workspaceAndIcon}  ${styles.backgroundColor}`
+                    ? `${styles.workspaceAndIcon} ${styles.backgroundColor}`
                     : styles.workspaceAndIcon
                 }
                 onClick={handleDropDownClickEvent}
@@ -246,8 +265,8 @@ const DashboardPage = () => {
               <div
                 className={
                   isMenuExpanded
-                    ? `${styles.otherMenuOptions}  ${styles.showOtherMenuOptions} ${styles.backgroundColor}`
-                    : `${styles.otherMenuOptions} `
+                    ? `${styles.otherMenuOptions} ${styles.showOtherMenuOptions} ${styles.backgroundColor}`
+                    : styles.otherMenuOptions
                 }
                 onClick={handleSettingsClickEvent}
               >
@@ -267,9 +286,7 @@ const DashboardPage = () => {
               >
                 <span
                   className={styles.workspaceText}
-                  style={{
-                    color: "#FFA54C",
-                  }}
+                  style={{ color: "#FFA54C" }}
                 >
                   Log Out
                 </span>
@@ -292,22 +309,10 @@ const DashboardPage = () => {
                 <span className={styles.createFolderText}>Create a folder</span>
               </div>
               {loading
-                ? folders &&
-                  folders.length > 0 &&
-                  folders.map((folder, index) => (
-                    <div
-                      className={styles.FolderCard}
-                      key={`${folder.name}${index}`}
-                    >
-                      <SkeletonTheme baseColor="#2a2a2d" highlightColor="#444">
-                        <Skeleton width={100} height={20} />
-                        <Skeleton width={20} height={20} />
-                      </SkeletonTheme>
-                    </div>
+                ? Array.from({ length: 3 }).map((_, index) => (
+                    <FolderSkeleton key={index} />
                   ))
-                : folders &&
-                  folders.length > 0 &&
-                  folders.map((folder) => (
+                : folders.map((folder) => (
                     <div
                       className={
                         folder._id === folderId
@@ -315,9 +320,7 @@ const DashboardPage = () => {
                           : styles.FolderCard
                       }
                       key={nanoid()}
-                      onClick={() => {
-                        handleFolderCardClick(folder._id);
-                      }}
+                      onClick={() => handleFolderCardClick(folder._id)}
                     >
                       <span className={styles.createFolderText}>
                         {folder.name}
@@ -346,29 +349,10 @@ const DashboardPage = () => {
                 </div>
               </div>
               {loading
-                ? forms &&
-                  forms.length > 0 &&
-                  forms.map((form, index) => (
-                    <div
-                      className={styles.formCard}
-                      key={`${form.name}${index}`}
-                    >
-                      <SkeletonTheme
-                        baseColor="#8b8b8d"
-                        highlightColor="#bfbfbf"
-                      >
-                        <Skeleton width={175} height={20} />
-                        <Skeleton
-                          width={20}
-                          height={20}
-                          containerClassName={styles.cardDeleteIcon}
-                        />
-                      </SkeletonTheme>
-                    </div>
+                ? Array.from({ length: 3 }).map((_, index) => (
+                    <FormSkeleton key={index} />
                   ))
-                : forms &&
-                  forms.length > 0 &&
-                  forms.map((form) => (
+                : forms.map((form) => (
                     <div className={styles.formCard} key={nanoid()}>
                       <img
                         src={deleteIcon}
@@ -378,9 +362,9 @@ const DashboardPage = () => {
                       />
                       <span
                         className={`${styles.formCardText} ${styles.existingFormCardText}`}
-                        onClick={() => {
-                          handleFormClick(form._id, form.name, form.theme);
-                        }}
+                        onClick={() =>
+                          handleFormClick(form._id, form.name, form.theme)
+                        }
                       >
                         {form.name}
                       </span>

@@ -34,14 +34,14 @@
 
 .formBotChatContainer {
   width: calc(100% - 40px);
-  height: 100%;
+  height: calc(100% - 40px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   overflow-y: scroll;
-  padding: 0px 20px;
+  padding: 20px 20px;
 }
 
 .formBotChatContainer::-webkit-scrollbar {
@@ -75,27 +75,28 @@
 }
 
 .bubbleElementContainer {
-  width: 100%;
+  width: 70%;
   height: auto;
   max-height: auto;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 8px;
+  align-self: start;
 }
 
 .bubbleElement {
   width: auto;
   height: 100%;
-  max-height: calc(40px - 10px);
-  min-height: calc(40px - 10px);
+  max-height: calc(50px - 16px);
+  min-height: calc(40px - 16px);
   display: flex;
   justify-content: flex-start;
   align-items: center;
   border-radius: 6px;
   background-color: #f7f8ff;
   color: #000000;
-  padding: 5px 10px;
+  padding: 8px 12px;
   font-family: var(--open-sans-font);
   font-size: 16px;
   font-weight: 600;
@@ -322,19 +323,20 @@ input[type="date"]:before {
   }
 
   .bubbleElementContainer {
-    width: 100%;
+    width: 70%;
     height: auto;
     max-height: 200px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    align-self: start;
     gap: 8px;
   }
 
   .bubbleElement {
-    width: auto;
+    width: 100%;
     height: 100%;
-    max-height: calc(40px - 10px);
+    max-height: auto;
     min-height: calc(40px - 10px);
     display: flex;
     justify-content: flex-start;
@@ -342,7 +344,7 @@ input[type="date"]:before {
     border-radius: 6px;
     background-color: #f7f8ff;
     color: #000000;
-    padding: 5px 10px;
+    padding: 10px 10px;
     font-family: var(--open-sans-font);
     font-size: 16px;
     font-weight: 600;
