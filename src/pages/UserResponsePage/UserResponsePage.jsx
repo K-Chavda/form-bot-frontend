@@ -11,6 +11,8 @@ import {
   increaseViewCount,
   increaseStartCount,
   increaseCompletedCount,
+  addUserResponse,
+  getSingleForm,
 } from "../../api/Form";
 
 // Icons & Images
@@ -18,8 +20,10 @@ import { profileThemeIcon, sendIcon } from "../../assets/icons";
 
 const UserResponsePage = () => {
   const { formId } = useParams();
-
-  const [theme, setTheme] = useState("teal");
+  const browserDarkTheme = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  ).matches;
+  const [theme, setTheme] = useState(browserDarkTheme ? "dark" : "light");
   const [dateInput, setDateInput] = useState("Select a date");
   const [value, setValue] = useState({});
   const [formFields, setFormFields] = useState([]);
@@ -27,7 +31,9 @@ const UserResponsePage = () => {
   const [imageLoading, setImageLoading] = useState(true);
   const [videoLoading, setVideoLoading] = useState(true);
   const [startIsIncreased, setStartIsIncreased] = useState(false);
-  const [completed, setCompleted] = useState(false); // New state for completed
+  const [completed, setCompleted] = useState(false);
+
+  const uniqueKey = nanoid();
 
   const handleImageLoad = () => {
     setImageLoading(false);
@@ -108,7 +114,7 @@ const UserResponsePage = () => {
         ...prevState,
         [name]: {
           value: "",
-          state: "incomplete",
+          state: "pending",
         },
       }));
       return;
@@ -137,7 +143,7 @@ const UserResponsePage = () => {
     }));
   };
 
-  const changeInputFieldState = (name, type = "") => {
+  const changeInputFieldState = async (name, type = "") => {
     if (value[name]?.value) {
       setValue((prevState) => ({
         ...prevState,
@@ -163,6 +169,9 @@ const UserResponsePage = () => {
       }
 
       checkAndIncreaseComplete(); // Check and increase completion if needed
+
+      await addUserResponse(formId, currentSeq, value[name]?.value, uniqueKey);
+      addUserResponseFuntion(currentSeq, value[name]?.value);
     } else {
       setValue((prevState) => ({
         ...prevState,
@@ -174,7 +183,7 @@ const UserResponsePage = () => {
     }
   };
 
-  const handleInputButtonClick = (event) => {
+  const handleInputButtonClick = async (event) => {
     const { name, innerText } = event.target;
     setValue((prevState) => ({
       ...prevState,
@@ -184,12 +193,15 @@ const UserResponsePage = () => {
       },
     }));
     setCurrentSeq(currentSeq + 1);
+
     if (!startIsIncreased) {
       increaseStart();
       setStartIsIncreased(true);
     }
 
-    checkAndIncreaseComplete(); // Check and increase completion if needed
+    checkAndIncreaseComplete();
+    await addUserResponse(formId, currentSeq, value[name]?.value, uniqueKey);
+    addUserResponseFuntion(currentSeq, value[name]?.value);
   };
 
   const handleRatingButtonClick = (name, value) => {
@@ -440,28 +452,38 @@ const UserResponsePage = () => {
   const fetchFormFieldData = async () => {
     try {
       const response = await getFormFields(formId);
+
       setFormFields(response.formFields);
     } catch (error) {
       console.error("Error fetching form fields:", error);
     }
   };
 
+  const fetchFormData = async () => {
+    try {
+      const response = await getSingleForm(formId);
+
+      setTheme(response.form?.theme);
+    } catch (error) {
+      console.error("Error fetching form data:", error);
+    }
+  };
+
   useEffect(() => {
     fetchFormFieldData();
-  }, [formId]);
+    fetchFormData();
+  }, []);
 
   useEffect(() => {
     if (formFields.length > 0) {
       const nextField = formFields.find((field) => field.seq === currentSeq);
       if (nextField && nextField.elementType === "bubble") {
-        // Automatically move to the next sequence after rendering a bubble
         setCurrentSeq(currentSeq + 1);
-        checkAndIncreaseComplete(); // Check and increase completion if needed
+        checkAndIncreaseComplete();
       }
     }
   }, [currentSeq, formFields]);
 
-  // Increase View Count
   useEffect(() => {
     increaseView();
   }, []);
@@ -479,7 +501,6 @@ const UserResponsePage = () => {
     setCompleted(true); // Mark as completed
   };
 
-  // Check if last element is complete and increase the count
   const checkAndIncreaseComplete = () => {
     const isLastElement =
       currentSeq >= Math.max(...formFields.map((field) => field.seq));
@@ -487,6 +508,10 @@ const UserResponsePage = () => {
     if (isLastElement && !completed) {
       increaseComplete();
     }
+  };
+
+  const addUserResponseFuntion = async (seq, value) => {
+    await addUserResponse(formId, seq, value, uniqueKey);
   };
 
   const sortedFormFields =

@@ -12,7 +12,7 @@ import {
   buttonIcon,
 } from "../assets/icons";
 
-const BASE_URI = "http://localhost:3000/api/v1"; //"http://localhost:3000/api/v1"; //"https://form-bot-backend.onrender.com/api/v1";
+const BASE_URI = "https://form-bot-backend.onrender.com/api/v1";
 const TOKEN = localStorage.getItem("token");
 const BUBBLE_TYPES = [
   {

@@ -11,7 +11,13 @@ import { showToast, promiseToast } from "../../components";
 import { UserContext } from "../../contexts/UserContext";
 
 // Icon & Images
-import { logoutIcon, userIcon, eyeIcon, lockIcon } from "../../assets/icons";
+import {
+  logoutIcon,
+  userIcon,
+  eyeIcon,
+  lockIcon,
+  backArrowIcon,
+} from "../../assets/icons";
 
 // Assuming `navigate` is a function from a routing library like `react-router-dom`
 import { useNavigate } from "react-router-dom";
@@ -67,6 +73,7 @@ const SettingsPage = () => {
 
       promiseToast([updateUserDetailsPromise], {
         pending: "Please, wait while we are updating details...",
+        success: "Details updated successfully!",
       });
     } catch (error) {
       console.error("Error updating user details:", error);
@@ -77,14 +84,18 @@ const SettingsPage = () => {
     logout();
   };
 
+  const handleBackButtonClick = () => {
+    navigate("/dashboard");
+  };
+
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
         const response = await GetUserDetailsById();
         setValue((prevState) => ({
           ...prevState,
-          username: response.data.username,
-          email: response.data.email,
+          username: response.data?.username,
+          email: response.data?.email,
         }));
       } catch (error) {
         console.error("Error fetching user details:", error);
@@ -197,6 +208,12 @@ const SettingsPage = () => {
       >
         <img src={logoutIcon} alt="form-bot" className={styles.logoutIcon} />
         <span className={styles.logoutText}>Logout</span>
+      </div>
+      <div
+        className={styles.backButtonContainer}
+        onClick={handleBackButtonClick}
+      >
+        <img src={backArrowIcon} alt="form-bot" className={styles.backIcon} />
       </div>
     </div>
   );

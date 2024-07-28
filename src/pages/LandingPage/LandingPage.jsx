@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./LandingPage.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -66,6 +66,10 @@ const LandingPage = () => {
 
     navigate("/register");
   };
+
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
 
   return (
     <div className={styles.mainContainer}>

@@ -18,6 +18,9 @@ import {
   SettingsPage,
 } from "./pages";
 
+// Utils
+import ProtectedRoutes from "./utils/ProtectedRoutes";
+
 function App() {
   return (
     <>
@@ -27,20 +30,22 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
-            <Route
-              path="/form-builder/:folderId?"
-              element={<FormBuilderPage />}
-            >
-              <Route path="flow" element={<FlowPage />} />
-              <Route path="theme" element={<ThemePage />} />
-              <Route path="response" element={<ResponsePage />} />
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route
+                path="/form-builder/:folderId?"
+                element={<FormBuilderPage />}
+              >
+                <Route path="flow" element={<FlowPage />} />
+                <Route path="theme" element={<ThemePage />} />
+                <Route path="response" element={<ResponsePage />} />
+              </Route>
+              <Route path="/settings" element={<SettingsPage />} />
             </Route>
             <Route
               path="/form/:formId/user-response"
               element={<UserResponsePage />}
             />
-            <Route path="/settings" element={<SettingsPage />} />
           </Routes>
         </UserProvider>
       </BrowserRouter>

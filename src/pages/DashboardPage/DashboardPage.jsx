@@ -231,7 +231,7 @@ const DashboardPage = () => {
                 onClick={handleDropDownClickEvent}
               >
                 <span className={styles.workspaceText}>
-                  {user.username}'s workspace
+                  {user ? user.username : null}'s workspace
                 </span>
                 <span
                   className={

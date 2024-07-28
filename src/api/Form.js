@@ -166,6 +166,26 @@ const increaseCompletedCount = async (formId) => {
   }
 };
 
+const addUserResponse = async (formId, seq, userResponse, uniqueKey) => {
+  try {
+    const response = await axios.post(
+      `${BASE_URI}/form/${formId}/user-response`,
+      {
+        seq,
+        response: userResponse,
+        uniqueKey: uniqueKey,
+      },
+      {
+        headers: { Authorization: localStorage.getItem("token") },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};
+
 export {
   getForms,
   getSingleForm,
@@ -178,4 +198,5 @@ export {
   increaseViewCount,
   increaseStartCount,
   increaseCompletedCount,
+  addUserResponse,
 };
