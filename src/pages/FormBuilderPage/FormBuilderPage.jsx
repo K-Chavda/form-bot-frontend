@@ -95,7 +95,6 @@ const FormBuilderPage = () => {
   };
 
   const handleShareButtonClick = async () => {
-    console.log("Share button clicked");
     await navigator.clipboard.writeText(
       `${origin}/form/${formId}/user-response`
     );
