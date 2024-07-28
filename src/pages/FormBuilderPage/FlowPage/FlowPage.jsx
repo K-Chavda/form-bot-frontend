@@ -27,20 +27,6 @@ const FlowPage = () => {
   return (
     <>
       <div className={styles.formBuilderBodyContainer}>
-        <div
-          className={
-            isShared
-              ? `${styles.shareLinkMessage} ${styles.shareLinkMessageOpacity}`
-              : styles.shareLinkMessage
-          }
-        >
-          <img
-            src={checkBlueIcon}
-            alt="form-bot"
-            className={styles.shareLinkCopySuccessIcon}
-          />
-          <span className={styles.shareLinkCopySuccessText}>Link copied</span>
-        </div>
         <div className={styles.formBodyElementsContainer}>
           <div className={styles.formBubbleAndInputElementsContainer}>
             {isLoading ? (

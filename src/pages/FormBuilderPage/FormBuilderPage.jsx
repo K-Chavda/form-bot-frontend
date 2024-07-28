@@ -30,6 +30,7 @@ import {
   deleteIcon,
   flagIcon,
   messageIcon,
+  checkBlueIcon,
 } from "../../assets/icons";
 
 const FormBuilderPage = () => {
@@ -94,6 +95,7 @@ const FormBuilderPage = () => {
   };
 
   const handleShareButtonClick = async () => {
+    console.log("Share button clicked");
     await navigator.clipboard.writeText(
       `${origin}/form/${formId}/user-response`
     );
@@ -387,6 +389,20 @@ const FormBuilderPage = () => {
             isLoading,
           }}
         />
+        <div
+          className={
+            isShared
+              ? `${styles.shareLinkMessage} ${styles.shareLinkMessageOpacity}`
+              : styles.shareLinkMessage
+          }
+        >
+          <img
+            src={checkBlueIcon}
+            alt="form-bot"
+            className={styles.shareLinkCopySuccessIcon}
+          />
+          <span className={styles.shareLinkCopySuccessText}>Link copied</span>
+        </div>
       </div>
     </>
   );
