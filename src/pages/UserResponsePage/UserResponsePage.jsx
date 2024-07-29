@@ -27,7 +27,7 @@ const UserResponsePage = () => {
   const [dateInput, setDateInput] = useState("Select a date");
   const [value, setValue] = useState({});
   const [formFields, setFormFields] = useState([]);
-  const [currentSeq, setCurrentSeq] = useState(2);
+  const [currentSeq, setCurrentSeq] = useState(1);
   const [imageLoading, setImageLoading] = useState(true);
   const [videoLoading, setVideoLoading] = useState(true);
   const [startIsIncreased, setStartIsIncreased] = useState(false);

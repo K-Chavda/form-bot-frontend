@@ -281,7 +281,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 input[type="date"]:before {
   color: transparent;
-
   background-color: var(--date-field-background-color);
   display: block;
   content: attr(placeholder);

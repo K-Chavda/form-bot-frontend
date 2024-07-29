@@ -189,6 +189,7 @@ const FormBuilderPage = () => {
   };
 
   const handleCloseButtonClick = () => {
+    localStorage.removeItem("activeTab");
     navigate("/dashboard");
   };
 
