@@ -20,9 +20,7 @@ import { profileThemeIcon, sendIcon } from "../../assets/icons";
 
 const UserResponsePage = () => {
   const { formId } = useParams();
-  const browserDarkTheme = window.matchMedia(
-    "(prefers-color-scheme: dark)"
-  ).matches;
+  const browserDarkTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [theme, setTheme] = useState(browserDarkTheme ? "dark" : "light");
   const [dateInput, setDateInput] = useState("Select a date");
   const [value, setValue] = useState({});
@@ -49,46 +47,19 @@ const UserResponsePage = () => {
   useEffect(() => {
     switch (theme) {
       case "light":
-        document.documentElement.style.setProperty(
-          "--scrollbar-thumb-color",
-          "#E6E6E6"
-        );
-        document.documentElement.style.setProperty(
-          "--scrollbar-thumb-hover-color",
-          "#B1B1B1"
-        );
-        document.documentElement.style.setProperty(
-          "--scrollbar-track-color",
-          "#ffffff"
-        );
+        document.documentElement.style.setProperty("--scrollbar-thumb-color", "#E6E6E6");
+        document.documentElement.style.setProperty("--scrollbar-thumb-hover-color", "#B1B1B1");
+        document.documentElement.style.setProperty("--scrollbar-track-color", "#ffffff");
         break;
       case "dark":
-        document.documentElement.style.setProperty(
-          "--scrollbar-thumb-color",
-          "#696969"
-        );
-        document.documentElement.style.setProperty(
-          "--scrollbar-thumb-hover-color",
-          "#9C9C9C"
-        );
-        document.documentElement.style.setProperty(
-          "--scrollbar-track-color",
-          "#171923"
-        );
+        document.documentElement.style.setProperty("--scrollbar-thumb-color", "#696969");
+        document.documentElement.style.setProperty("--scrollbar-thumb-hover-color", "#9C9C9C");
+        document.documentElement.style.setProperty("--scrollbar-track-color", "#171923");
         break;
       case "teal":
-        document.documentElement.style.setProperty(
-          "--scrollbar-thumb-color",
-          "#7ab0bb"
-        );
-        document.documentElement.style.setProperty(
-          "--scrollbar-thumb-hover-color",
-          "#3a6a76"
-        );
-        document.documentElement.style.setProperty(
-          "--scrollbar-track-color",
-          "#518c9b"
-        );
+        document.documentElement.style.setProperty("--scrollbar-thumb-color", "#7ab0bb");
+        document.documentElement.style.setProperty("--scrollbar-thumb-hover-color", "#3a6a76");
+        document.documentElement.style.setProperty("--scrollbar-track-color", "#518c9b");
         break;
 
       default:
@@ -108,10 +79,7 @@ const UserResponsePage = () => {
     const year = date.getFullYear();
 
     if (isNaN(date.getTime())) {
-      document.documentElement.style.setProperty(
-        "--placeholder-color",
-        "#847f7f"
-      );
+      document.documentElement.style.setProperty("--placeholder-color", "#847f7f");
       setDateInput("Select a date");
       setValue((prevState) => ({
         ...prevState,
@@ -123,10 +91,7 @@ const UserResponsePage = () => {
       return;
     }
 
-    document.documentElement.style.setProperty(
-      "--placeholder-color",
-      "#000000"
-    );
+    document.documentElement.style.setProperty("--placeholder-color", "#000000");
     setDateInput(`${day}/${month}/${year}`);
     setValue((prevState) => ({
       ...prevState,
@@ -156,15 +121,8 @@ const UserResponsePage = () => {
         },
       }));
 
-      if (type === "date")
-        document.documentElement.style.setProperty(
-          "--date-field-background-color",
-          "#777777"
-        );
-      document.documentElement.style.setProperty(
-        "--placeholder-color",
-        "#ffffff"
-      );
+      if (type === "date") document.documentElement.style.setProperty("--date-field-background-color", "#777777");
+      document.documentElement.style.setProperty("--placeholder-color", "#ffffff");
       setCurrentSeq(currentSeq + 1);
       if (!startIsIncreased) {
         increaseStart();
@@ -261,11 +219,7 @@ const UserResponsePage = () => {
                 handleSubmit(name);
               }}
             >
-              <img
-                src={sendIcon}
-                alt="form-bot"
-                className={styles.sendButton}
-              />
+              <img src={sendIcon} alt="form-bot" className={styles.sendButton} />
             </div>
           </>
         );
@@ -306,11 +260,7 @@ const UserResponsePage = () => {
                 handleSubmit(name);
               }}
             >
-              <img
-                src={sendIcon}
-                alt="form-bot"
-                className={styles.sendButton}
-              />
+              <img src={sendIcon} alt="form-bot" className={styles.sendButton} />
             </div>
           </>
         );
@@ -339,11 +289,7 @@ const UserResponsePage = () => {
                 changeInputFieldState(name, "date");
               }}
             >
-              <img
-                src={sendIcon}
-                alt="form-bot"
-                className={styles.sendButton}
-              />
+              <img src={sendIcon} alt="form-bot" className={styles.sendButton} />
             </div>
           </>
         );
@@ -372,11 +318,7 @@ const UserResponsePage = () => {
                 handleSubmit(name);
               }}
             >
-              <img
-                src={sendIcon}
-                alt="form-bot"
-                className={styles.sendButton}
-              />
+              <img src={sendIcon} alt="form-bot" className={styles.sendButton} />
             </div>
           </>
         );
@@ -405,11 +347,7 @@ const UserResponsePage = () => {
                 handleSubmit(name);
               }}
             >
-              <img
-                src={sendIcon}
-                alt="form-bot"
-                className={styles.sendButton}
-              />
+              <img src={sendIcon} alt="form-bot" className={styles.sendButton} />
             </div>
           </>
         );
@@ -438,11 +376,7 @@ const UserResponsePage = () => {
                 handleSubmit(name);
               }}
             >
-              <img
-                src={sendIcon}
-                alt="form-bot"
-                className={styles.sendButton}
-              />
+              <img src={sendIcon} alt="form-bot" className={styles.sendButton} />
             </div>
           </>
         );
@@ -504,8 +438,7 @@ const UserResponsePage = () => {
   };
 
   const checkAndIncreaseComplete = () => {
-    const isLastElement =
-      currentSeq >= Math.max(...formFields.map((field) => field.seq));
+    const isLastElement = currentSeq >= Math.max(...formFields.map((field) => field.seq));
 
     if (isLastElement && !completed) {
       increaseComplete();
@@ -517,9 +450,7 @@ const UserResponsePage = () => {
   };
 
   const sortedFormFields =
-    formFields &&
-    formFields.length > 0 &&
-    formFields.sort((a, b) => a.seq - b.seq).filter((field) => field.seq !== 0);
+    formFields && formFields.length > 0 && formFields.sort((a, b) => a.seq - b.seq).filter((field) => field.seq !== 0);
 
   return (
     <div className={`${styles.mainContainer} ${getThemeClass(theme)}`}>
@@ -530,15 +461,9 @@ const UserResponsePage = () => {
             if (field.seq <= currentSeq && field.elementType === "bubble") {
               return (
                 <div className={styles.bubbleElementContainer} key={inputName}>
-                  <img
-                    src={profileThemeIcon}
-                    alt="form-bot"
-                    className={styles.bubbleElementIcon}
-                  />
+                  <img src={profileThemeIcon} alt="form-bot" className={styles.bubbleElementIcon} />
                   {field.type === "bubble_text" ? (
-                    <span className={styles.bubbleElement}>
-                      {field.fieldValue}
-                    </span>
+                    <span className={styles.bubbleElement}>{field.fieldValue}</span>
                   ) : field.type === "gif" || field.type === "image" ? (
                     <div className={styles.bubbleImageContainer}>
                       {imageLoading ? (
@@ -572,20 +497,12 @@ const UserResponsePage = () => {
                           secondaryColor="aliceblue"
                         />
                       ) : null}
-                      <ReactPlayer
-                        url={field.fieldValue}
-                        height="100%"
-                        width="100%"
-                        onReady={handleVideoReady}
-                      />
+                      <ReactPlayer url={field.fieldValue} height="100%" width="100%" onReady={handleVideoReady} />
                     </div>
                   ) : null}
                 </div>
               );
-            } else if (
-              field.seq <= currentSeq &&
-              field.elementType === "input"
-            ) {
+            } else if (field.seq <= currentSeq && field.elementType === "input") {
               return (
                 <div className={styles.inputElementContainer} key={inputName}>
                   {getInputElement(field.type, inputName, field.fieldValue)}

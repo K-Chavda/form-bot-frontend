@@ -17,6 +17,8 @@ const ResponsePage = () => {
     if (formId) {
       fetchUserResponses();
       fetchFormDetails();
+    } else {
+      setIsLoading(false);
     }
   }, [formId]);
 
@@ -65,9 +67,7 @@ const ResponsePage = () => {
   return (
     <div className={styles.mainContainer}>
       {userResponses.length === 0 && !isLoading ? (
-        <span className={styles.noResponsesMessage}>
-          No Response yet collected
-        </span>
+        <span className={styles.noResponsesMessage}>No Response yet collected</span>
       ) : (
         <>
           {isLoading ? (
@@ -95,21 +95,15 @@ const ResponsePage = () => {
             <div className={styles.userResponseAnalyticsContainer}>
               <div className={styles.analyticsCard}>
                 <span className={styles.analutics}>Views</span>
-                <span className={styles.analyticsText}>
-                  {formDetails.views}
-                </span>
+                <span className={styles.analyticsText}>{formDetails.views}</span>
               </div>
               <div className={styles.analyticsCard}>
                 <span className={styles.analutics}>Starts</span>
-                <span className={styles.analyticsText}>
-                  {formDetails.start}
-                </span>
+                <span className={styles.analyticsText}>{formDetails.start}</span>
               </div>
               <div className={styles.analyticsCard}>
                 <span className={styles.analutics}>Completion rate</span>
-                <span className={styles.analyticsText}>
-                  {formDetails.completionRate}
-                </span>
+                <span className={styles.analyticsText}>{formDetails.completionRate}</span>
               </div>
             </div>
           )}
@@ -212,14 +206,7 @@ const ResponsePage = () => {
                     <th className={styles.submittedAt}>Submitted At</th>
                     {sortedFormFields.map((field) =>
                       field.elementType === "input" ? (
-                        <th
-                          key={field._id}
-                          className={
-                            field.type === "rating"
-                              ? styles.ratingTd
-                              : styles.tdWidth
-                          }
-                        >
+                        <th key={field._id} className={field.type === "rating" ? styles.ratingTd : styles.tdWidth}>
                           {field.displayValue}
                         </th>
                       ) : null
@@ -231,27 +218,17 @@ const ResponsePage = () => {
                     return (
                       <tr key={response._id}>
                         <td className={styles.srNo}>{index + 1}</td>
-                        <td className={styles.submittedAt}>
-                          {getFormatedDate(response.createdAt)}
-                        </td>
+                        <td className={styles.submittedAt}>{getFormatedDate(response.createdAt)}</td>
                         {sortedFormFields.map((field) =>
                           field.elementType === "input" ? (
                             <td
                               key={`${field._id}${response._id}`}
-                              className={
-                                field.type === "rating"
-                                  ? styles.ratingTd
-                                  : styles.tdWidth
-                              }
+                              className={field.type === "rating" ? styles.ratingTd : styles.tdWidth}
                             >
                               {response.formFieldsResponse &&
-                                response.formFieldsResponse.map(
-                                  (responseValue) => {
-                                    return responseValue.seq === field.seq
-                                      ? responseValue.response
-                                      : "";
-                                  }
-                                )}
+                                response.formFieldsResponse.map((responseValue) => {
+                                  return responseValue.seq === field.seq ? responseValue.response : "";
+                                })}
                             </td>
                           ) : null
                         )}
